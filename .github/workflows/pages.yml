@@ -27,6 +27,15 @@ jobs:
       - name: Configure Pages
         uses: actions/configure-pages@v5
 
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Bundle the RUM SDK
+        run: npm ci && npm run build
+
       - name: Upload site
         uses: actions/upload-pages-artifact@v4
         with:

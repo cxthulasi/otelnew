@@ -1,0 +1,106 @@
+function handler(event) {
+  var request = event.request;
+  var origin = headerValue(request.headers, "origin");
+
+  if (request.method === "OPTIONS") {
+    if (!allowedOrigin(origin)) {
+      return deny();
+    }
+    return {
+      statusCode: 204,
+      statusDescription: "No Content",
+      headers: corsHeaders(origin),
+    };
+  }
+
+  var raw = queryValue(request, "cxforward");
+  var target = decodeTarget(raw);
+  var ingress = "https://${ingress_host}";
+  var prefix = ingress + "/browser/";
+
+  if (target.indexOf(prefix) !== 0 || !safeTarget(target, ingress)) {
+    return deny();
+  }
+
+  var path = target.substring(ingress.length);
+  var queryAt = path.indexOf("?");
+  var uri = queryAt === -1 ? path : path.substring(0, queryAt);
+  if (uri.charAt(0) !== "/" || !safeUri(uri)) {
+    return deny();
+  }
+
+  request.uri = uri;
+  request.querystring = {};
+  return request;
+}
+
+function headerValue(headers, name) {
+  var header = headers && headers[name];
+  return header && header.value ? header.value : "";
+}
+
+function queryValue(request, name) {
+  var param = request.querystring && request.querystring[name];
+  return param && param.value ? param.value : "";
+}
+
+function decodeTarget(value) {
+  var current = value || "";
+  var i;
+  for (i = 0; i < 2; i++) {
+    if (current.indexOf("%") === -1) {
+      break;
+    }
+    try {
+      var decoded = decodeURIComponent(current);
+      if (decoded === current) {
+        break;
+      }
+      current = decoded;
+    } catch (error) {
+      return "";
+    }
+  }
+  return current;
+}
+
+function safeTarget(target, ingress) {
+  var path = target.substring(ingress.length);
+  var queryAt = path.indexOf("?");
+  var uri = queryAt === -1 ? path : path.substring(0, queryAt);
+  return safeUri(uri);
+}
+
+function safeUri(value) {
+  return (
+    value.indexOf("..") === -1 &&
+    value.indexOf("\\") === -1 &&
+    value.indexOf("@") === -1 &&
+    value.indexOf("//") === -1
+  );
+}
+
+function allowedOrigin(origin) {
+  var allowed = {
+${allowed_origins}
+  };
+  return !!allowed[origin];
+}
+
+function corsHeaders(origin) {
+  return {
+    "access-control-allow-origin": { value: origin },
+    "access-control-allow-methods": {
+      value: "GET, HEAD, OPTIONS, PUT, POST, PATCH, DELETE",
+    },
+    "access-control-allow-headers": {
+      value: "content-type, traceparent, tracestate, baggage",
+    },
+    "access-control-max-age": { value: "600" },
+    vary: { value: "Origin" },
+  };
+}
+
+function deny() {
+  return { statusCode: 403, statusDescription: "Forbidden" };
+}

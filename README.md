@@ -7,6 +7,8 @@ The site is static HTML, CSS, and JavaScript in [`site/`](site/). A push to `mai
 ## Local preview
 
 ```bash
+npm ci
+npm run build
 cd site
 python3 -m http.server 8765
 ```
@@ -15,7 +17,9 @@ Open http://127.0.0.1:8765/.
 
 ## Deployment
 
-[`.github/workflows/pages.yml`](.github/workflows/pages.yml) runs on every push to `main`. It uploads `site/` and deploys to GitHub Pages. No build step.
+[`.github/workflows/pages.yml`](.github/workflows/pages.yml) runs on every push to `main`. It bundles the Coralogix browser SDK, uploads `site/`, and deploys to GitHub Pages.
+
+The browser SDK sends RUM through `https://rum.otelnew.com/rum`. The CloudFront proxy for that hostname is Terraform in [`iac/rum-proxy`](iac/rum-proxy/).
 
 The contact address used on the site is `hello@otelnew.com`.
 
@@ -50,5 +54,6 @@ Add:
 | AAAA | `@` | `2606:50c0:8002::153` |
 | AAAA | `@` | `2606:50c0:8003::153` |
 | CNAME | `www` | `cxthulasi.github.io` |
+| CNAME | `rum` | `d1zmcme6cshp8g.cloudfront.net` |
 
-After DNS propagates, enforce HTTPS in the repository Pages settings. GitHub issues the certificate once it sees these records.
+After DNS propagates, enforce HTTPS in the repository Pages settings. GitHub issues the certificate once it sees these records. CloudFront issues the certificate for `rum.otelnew.com` once the `rum` CNAME points at the routing endpoint.

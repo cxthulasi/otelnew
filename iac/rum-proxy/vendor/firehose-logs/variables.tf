@@ -1,0 +1,166 @@
+variable "coralogix_region" {
+  description = "Coralogix account region: EU1, EU2, AP1, AP2, AP3, US1, US2"
+  type        = string
+  validation {
+    condition     = contains(["EU1", "EU2", "AP1", "AP2", "AP3", "US1", "US2"], var.coralogix_region)
+    error_message = "The coralogix region must be one of these values: [EU1, EU2, AP1, AP2, AP3, US1, US2]."
+  }
+}
+
+variable "api_key" {
+  description = "Coralogix account API key. Ignored when api_key_secret_arn is set. Required unless api_key_secret_arn is provided."
+  type        = string
+  sensitive   = true
+  default     = null
+
+  validation {
+    condition     = (var.api_key != null && var.api_key != "") || (var.api_key_secret_arn != null && var.api_key_secret_arn != "")
+    error_message = "You must provide either api_key or api_key_secret_arn."
+  }
+}
+
+variable "api_key_secret_arn" {
+  description = <<-EOT
+    ARN of a Secrets Manager secret holding the Coralogix API key as JSON, {"api_key": "..."}.
+    When set, Firehose reads the key at runtime and api_key is ignored, so rotating the secret
+    takes effect without a Terraform apply. This must be a separate secret from any plaintext
+    value used with api_key. Must be in the same region as the delivery stream.
+  EOT
+  type        = string
+  default     = null
+}
+
+variable "api_key_secret_kms_key_arn" {
+  description = "Optional ARN of the KMS key used to encrypt the Secrets Manager secret. Required only if the secret uses a customer managed key (CMK)."
+  type        = string
+  default     = null
+
+  validation {
+    condition     = var.api_key_secret_kms_key_arn == null || var.api_key_secret_kms_key_arn != ""
+    error_message = "api_key_secret_kms_key_arn must be null or a non-empty KMS key ARN."
+  }
+}
+
+variable "firehose_stream" {
+  description = "AWS Kinesis firehose delivery stream name"
+  type        = string
+}
+
+variable "application_name" {
+  description = "The name of your application in Coralogix"
+  type        = string
+  default     = null
+}
+
+variable "subsystem_name" {
+  description = "The subsystem name of your application in Coralogix"
+  type        = string
+  default     = null
+}
+
+variable "cloudwatch_retention_days" {
+  description = "Days of retention in Cloudwatch retention days"
+  type        = number
+  default     = 1
+}
+
+variable "custom_domain" {
+  description = "Custom domain for Coralogix firehose integration endpoints, does not work for privatelink (e.g. cust.coralogix-123.net:8443 for https://ingress.cust.coralogix-123.net:8443/aws/firehose)"
+  type        = string
+  default     = null
+}
+
+variable "source_type_logs" {
+  description = "The source_type of kinesis firehose: KinesisStreamAsSource or DirectPut"
+  type        = string
+  default     = "DirectPut"
+}
+
+variable "kinesis_stream_arn" {
+  description = "If 'KinesisStreamAsSource' set as source_type_logs. Set the kinesis stream's ARN as the source of the firehose log stream"
+  type        = string
+  default     = null
+}
+
+variable "integration_type_logs" {
+  description = "The integration type of the firehose delivery stream: 'CloudWatch_JSON', 'WAF', 'CloudWatch_CloudTrail', 'EksFargate', 'Default', 'RawText'"
+  type        = string
+  default     = null
+}
+
+variable "s3_backup_custom_name" {
+  description = "Set the name of the S3 backup bucket, otherwise variable '{firehose_stream}-backup-logs' will be used"
+  type        = string
+  default     = null
+}
+
+variable "existing_s3_backup" {
+  description = "Use an existing S3 bucket to use as a backup bucket"
+  type        = string
+  default     = null
+}
+
+variable "govcloud_deployment" {
+  description = "Enable if you deploy the integration in govcloud"
+  type        = bool
+  default     = false
+}
+
+variable "firehose_iam_custom_name" {
+  description = "Set the name of the firehose IAM role & policy, otherwise variable '{firehose_stream}-firehose-logs-iam' will be used"
+  type        = string
+  default     = null
+}
+
+variable "existing_firehose_iam" {
+  description = "Use an existing IAM role to use as a firehose role"
+  type        = string
+  default     = null
+}
+
+variable "user_supplied_tags" {
+  description = "Tags supplied by the user to populate to all generated resources"
+  type        = map(string)
+  default     = {}
+}
+
+variable "override_default_tags" {
+  description = "Override and remove the default tags by setting to true"
+  type        = bool
+  default     = false
+}
+
+variable "s3_enable_secure_transport" {
+  description = "Disable if you dont want bucket policy that complies with s3-bucket-ssl-requests-only rule"
+  type        = bool
+  default     = true
+}
+
+variable "server_side_encryption" {
+  description = "Server side encryption configuration"
+  type = object({
+    enabled  = bool
+    key_type = optional(string)
+    key_arn  = optional(string)
+  })
+  default = {
+    enabled  = false
+    key_type = "AWS_OWNED_CMK"
+  }
+
+  validation {
+    condition     = contains(["AWS_OWNED_CMK", "CUSTOMER_MANAGED_CMK"], var.server_side_encryption.key_type)
+    error_message = "Valid values for key_type are AWS_OWNED_CMK and CUSTOMER_MANAGED_CMK."
+  }
+}
+
+variable "content_encoding" {
+  description = "Content encoding for the firehose delivery stream"
+  type        = string
+  default     = "GZIP"
+
+  validation {
+    condition     = contains(["NONE", "GZIP"], var.content_encoding)
+    error_message = "Allowed values are NONE and GZIP"
+  }
+}

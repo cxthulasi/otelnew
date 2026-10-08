@@ -1,0 +1,20 @@
+function handler(event) {
+  var response = event.response;
+  var origin = headerValue(event.request.headers, "origin");
+  var allowed = {
+${allowed_origins}
+  };
+
+  if (allowed[origin]) {
+    response.headers["access-control-allow-origin"] = { value: origin };
+    response.headers["access-control-allow-credentials"] = { value: "false" };
+    response.headers["access-control-expose-headers"] = { value: "traceparent" };
+    response.headers["vary"] = { value: "Origin" };
+  }
+  return response;
+}
+
+function headerValue(headers, name) {
+  var header = headers && headers[name];
+  return header && header.value ? header.value : "";
+}
