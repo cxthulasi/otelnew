@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Dashboard — otelnew</title>
+    <meta name="description" content="Sample service dashboard. Filters, refresh, and investigation notes send RUM logs, timings, and network events.">
+    <link rel="canonical" href="https://otelnew.com/dashboard.html">
+    <meta name="theme-color" content="#123F38">
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/rum.js" defer></script>
+  </head>
+  <body class="app-body">
+    <a class="skip-link" href="#content">Skip to content</a>
+    <header class="site-header">
+      <div class="wrap header-inner">
+        <a class="logo" href="index.html">
+          <img class="logo-mark" src="assets/logo.svg" alt="" width="32" height="32">
+          <span class="logo-word">otelnew</span>
+        </a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+          <span class="sr-only">Menu</span>
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+        </button>
+        <nav id="site-nav" class="site-nav" aria-label="Primary">
+          <a href="features.html">Features</a>
+          <a href="dashboard.html" aria-current="page">Dashboard</a>
+          <a href="errors.html">Errors</a>
+          <a href="network.html">Network</a>
+          <a class="button button-small" href="mailto:hello@otelnew.com">Request access</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="content" class="dash">
+      <div class="wrap">
+        <div class="dash-top">
+          <div>
+            <p class="eyebrow">Dashboard</p>
+            <h1>Services</h1>
+            <p class="lead">Sample data for a checkout path. These numbers are illustrative. Actions on this page send real RUM events.</p>
+          </div>
+          <div class="dash-actions">
+            <label class="filter">
+              <span>Environment</span>
+              <select data-filter>
+                <option value="all">All</option>
+                <option value="production">Production</option>
+                <option value="staging">Staging</option>
+              </select>
+            </label>
+            <button class="button button-secondary" type="button" data-investigate>Log an investigation</button>
+            <button class="button" type="button" data-refresh>Refresh</button>
+          </div>
+        </div>
+
+        <div class="stat-grid">
+          <article class="stat">
+            <p>Requests</p>
+            <strong>18.4k</strong>
+            <span>Sample, last hour</span>
+          </article>
+          <article class="stat">
+            <p>p95 latency</p>
+            <strong>186ms</strong>
+            <span>checkout-api</span>
+          </article>
+          <article class="stat">
+            <p>Error rate</p>
+            <strong>1.8%</strong>
+            <span>Above the sample budget</span>
+          </article>
+          <article class="stat">
+            <p>Slowest span</p>
+            <strong>postgres</strong>
+            <span>Pool wait on POST /v1/orders</span>
+          </article>
+        </div>
+
+        <div class="panel">
+          <div class="panel-head">
+            <h2>Service list</h2>
+            <p data-note>Opened the dashboard. A page-view log and a custom measurement were sent.</p>
+          </div>
+          <div class="table-scroll">
+            <table>
+              <thead>
+                <tr>
+                  <th>Service</th>
+                  <th>Environment</th>
+                  <th>Latency</th>
+                  <th>Errors</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody data-services></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap footer-base">
+        <p>© <span data-year>2026</span> otelnew</p>
+        <p>Sample dashboard. Built on OpenTelemetry. Not affiliated with or endorsed by the OpenTelemetry project.</p>
+      </div>
+    </footer>
+    <script src="js/main.js" defer></script>
+    <script src="js/dashboard.js" defer></script>
+    <script>
+      var year = document.querySelector("[data-year]");
+      if (year) year.textContent = String(new Date().getFullYear());
+    </script>
+  </body>
+</html>

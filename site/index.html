@@ -39,7 +39,7 @@
     <a class="skip-link" href="#content">Skip to content</a>
     <header class="site-header">
       <div class="wrap header-inner">
-        <a class="logo" href="#top">
+        <a class="logo" href="index.html">
           <img class="logo-mark" src="assets/logo.svg" alt="" width="32" height="32">
           <span class="logo-word">otelnew</span>
         </a>
@@ -50,10 +50,10 @@
           <span class="nav-toggle-bar"></span>
         </button>
         <nav id="site-nav" class="site-nav" aria-label="Primary">
-          <a href="#platform">Platform</a>
-          <a href="#signals">Signals</a>
-          <a href="#how-it-works">How it works</a>
-          <a href="#standards">Standards</a>
+          <a href="features.html">Features</a>
+          <a href="dashboard.html">Dashboard</a>
+          <a href="errors.html">Errors</a>
+          <a href="network.html">Network</a>
           <a class="button button-small" href="mailto:hello@otelnew.com">Request access</a>
         </nav>
       </div>
@@ -67,8 +67,8 @@
             <h1>Observability, rebuilt for what's next.</h1>
             <p class="lead">otelnew brings your logs, metrics, and traces together in one OpenTelemetry-native platform. Instrument once, see everything, and move from alert to root cause in minutes, not hours.</p>
             <div class="hero-actions">
-              <a class="button" href="mailto:hello@otelnew.com">Request access</a>
-              <a class="button button-secondary" href="#platform">See the platform</a>
+              <a class="button" href="dashboard.html">Open the dashboard</a>
+              <a class="button button-secondary" href="features.html">See features</a>
             </div>
             <ul class="hero-points">
               <li>Logs, metrics, and traces</li>
@@ -158,6 +158,31 @@
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      <section class="paths" aria-label="Explore">
+        <div class="wrap path-grid">
+          <a class="path-card" href="features.html">
+            <p class="eyebrow">Product</p>
+            <h2>Features</h2>
+            <p>Logs, metrics, traces, and browser RUM on one OpenTelemetry-native platform.</p>
+          </a>
+          <a class="path-card" href="dashboard.html">
+            <p class="eyebrow">Console</p>
+            <h2>Dashboard</h2>
+            <p>A sample service view. Refreshing it records timings, measurements, and a network call.</p>
+          </a>
+          <a class="path-card" href="errors.html">
+            <p class="eyebrow">Signal lab</p>
+            <h2>Errors</h2>
+            <p>Opening this page sends a handled exception and an error log through the RUM SDK.</p>
+          </a>
+          <a class="path-card" href="network.html">
+            <p class="eyebrow">Signal lab</p>
+            <h2>Network</h2>
+            <p>Opening this page fetches public APIs so the SDK records network-request events.</p>
+          </a>
         </div>
       </section>
 
@@ -329,7 +354,7 @@
     <footer class="site-footer">
       <div class="wrap footer-grid">
         <div>
-          <a class="logo" href="#top">
+          <a class="logo" href="index.html">
             <img class="logo-mark" src="assets/logo.svg" alt="" width="32" height="32">
             <span class="logo-word">otelnew</span>
           </a>
@@ -337,10 +362,10 @@
         </div>
         <div>
           <h2>Product</h2>
-          <a href="#platform">Platform</a>
-          <a href="#signals">Signals</a>
-          <a href="#how-it-works">How it works</a>
-          <a href="#standards">Standards</a>
+          <a href="features.html">Features</a>
+          <a href="dashboard.html">Dashboard</a>
+          <a href="errors.html">Errors</a>
+          <a href="network.html">Network</a>
         </div>
         <div>
           <h2>Contact</h2>
@@ -353,7 +378,8 @@
         <p>Built on OpenTelemetry. Not affiliated with or endorsed by the OpenTelemetry project.</p>
       </div>
     </footer>
-    <script src="js/main.js"></script>
+    <script src="js/main.js" defer></script>
+    <script src="js/home.js" defer></script>
     <script>
       var year = document.querySelector("[data-year]");
       if (year) year.textContent = String(new Date().getFullYear());
