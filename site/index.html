@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>otelnew — Observability, rebuilt for what's next</title>
+    <meta name="description" content="otelnew is a next-generation observability platform built on OpenTelemetry. Unify logs, metrics, and traces with real-time insight and no vendor lock-in.">
+    <link rel="canonical" href="https://otelnew.com/">
+    <meta name="theme-color" content="#123F38">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="otelnew">
+    <meta property="og:title" content="otelnew — Observability, rebuilt for what's next">
+    <meta property="og:description" content="otelnew is a next-generation observability platform built on OpenTelemetry. Unify logs, metrics, and traces with real-time insight and no vendor lock-in.">
+    <meta property="og:url" content="https://otelnew.com/">
+    <meta property="og:image" content="https://otelnew.com/assets/og.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="otelnew — Observability, rebuilt for what's next">
+    <meta name="twitter:description" content="otelnew is a next-generation observability platform built on OpenTelemetry. Unify logs, metrics, and traces with real-time insight and no vendor lock-in.">
+    <meta name="twitter:image" content="https://otelnew.com/assets/og.png">
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "otelnew",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Any",
+        "url": "https://otelnew.com/",
+        "description": "otelnew is a next-generation observability platform built on OpenTelemetry. Unify logs, metrics, and traces with real-time insight and no vendor lock-in."
+      }
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#content">Skip to content</a>
+    <header class="site-header">
+      <div class="wrap header-inner">
+        <a class="logo" href="#top">
+          <img class="logo-mark" src="assets/logo.svg" alt="" width="32" height="32">
+          <span class="logo-word">otelnew</span>
+        </a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+          <span class="sr-only">Menu</span>
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+        </button>
+        <nav id="site-nav" class="site-nav" aria-label="Primary">
+          <a href="#platform">Platform</a>
+          <a href="#signals">Signals</a>
+          <a href="#how-it-works">How it works</a>
+          <a href="#standards">Standards</a>
+          <a class="button button-small" href="mailto:hello@otelnew.com">Request access</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="content">
+      <section class="hero" id="top">
+        <div class="wrap hero-grid">
+          <div class="hero-copy">
+            <p class="eyebrow">OpenTelemetry-native observability</p>
+            <h1>Observability, rebuilt for what's next.</h1>
+            <p class="lead">otelnew brings your logs, metrics, and traces together in one OpenTelemetry-native platform. Instrument once, see everything, and move from alert to root cause in minutes, not hours.</p>
+            <div class="hero-actions">
+              <a class="button" href="mailto:hello@otelnew.com">Request access</a>
+              <a class="button button-secondary" href="#platform">See the platform</a>
+            </div>
+            <ul class="hero-points">
+              <li>Logs, metrics, and traces</li>
+              <li>Built on OpenTelemetry</li>
+              <li>No vendor lock-in</li>
+            </ul>
+          </div>
+
+          <div class="hero-visual">
+            <div class="console" aria-hidden="true">
+              <div class="console-top">
+                <span class="console-dots"><i></i><i></i><i></i></span>
+                <span class="console-crumb">production / checkout</span>
+                <span class="console-live">Live</span>
+                <span class="console-range">Last 15 min</span>
+              </div>
+              <div class="console-body">
+                <ul class="services">
+                  <li>
+                    <i class="dot dot-ok"></i>
+                    <span>edge-gateway</span>
+                    <em>42ms</em>
+                  </li>
+                  <li class="is-active">
+                    <i class="dot dot-bad"></i>
+                    <span>checkout-api</span>
+                    <em>1.8s</em>
+                  </li>
+                  <li>
+                    <i class="dot dot-ok"></i>
+                    <span>payments</span>
+                    <em>88ms</em>
+                  </li>
+                  <li>
+                    <i class="dot dot-ok"></i>
+                    <span>inventory</span>
+                    <em>61ms</em>
+                  </li>
+                </ul>
+                <div class="console-main">
+                  <div class="metric-grid">
+                    <article class="metric">
+                      <p>Request rate</p>
+                      <div class="metric-row">
+                        <strong>18.4k</strong>
+                        <svg class="spark spark-good" viewBox="0 0 72 28"><polyline points="0,20 12,18 24,19 36,14 48,15 60,10 72,8"/></svg>
+                      </div>
+                    </article>
+                    <article class="metric">
+                      <p>Error rate</p>
+                      <div class="metric-row">
+                        <strong>2.4%</strong>
+                        <svg class="spark spark-bad" viewBox="0 0 72 28"><polyline points="0,22 12,21 24,20 36,16 48,12 60,8 72,4"/></svg>
+                      </div>
+                    </article>
+                    <article class="metric">
+                      <p>p95 latency</p>
+                      <div class="metric-row">
+                        <strong>1.84s</strong>
+                        <svg class="spark spark-bad" viewBox="0 0 72 28"><polyline points="0,18 12,17 24,19 36,14 48,11 60,7 72,5"/></svg>
+                      </div>
+                    </article>
+                    <article class="metric">
+                      <p>Linked traces</p>
+                      <div class="metric-row">
+                        <strong>100%</strong>
+                        <svg class="spark spark-good" viewBox="0 0 72 28"><polyline points="0,16 12,15 24,16 36,14 48,15 60,13 72,14"/></svg>
+                      </div>
+                    </article>
+                  </div>
+                  <div class="trace-panel">
+                    <div class="panel-label">
+                      <span>Trace · POST /v1/orders</span>
+                      <span>8f3a…c21</span>
+                    </div>
+                    <div class="span"><span class="span-name">edge-gateway</span><span class="span-track"><i style="width:14%"></i></span><span class="span-time">12ms</span></div>
+                    <div class="span is-cause"><span class="span-name">checkout-api</span><span class="span-track"><i style="width:96%"></i></span><span class="span-time">1.71s</span></div>
+                    <div class="span is-child"><span class="span-name">payments</span><span class="span-track"><i style="width:18%"></i></span><span class="span-time">40ms</span></div>
+                    <div class="span is-child is-cause"><span class="span-name">postgres</span><span class="span-track"><i style="width:88%"></i></span><span class="span-time">1.62s</span></div>
+                  </div>
+                  <div class="log-panel">
+                    <div class="panel-label"><span>Logs on the same trace</span></div>
+                    <p class="log-line"><span class="sev sev-error">ERROR</span><span class="log-msg">connection pool exhausted</span></p>
+                    <p class="log-line"><span class="sev sev-warn">WARN</span><span class="log-msg">pool wait p99 crossed 1.4s</span></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="platform" id="platform">
+        <div class="wrap split">
+          <div>
+            <p class="eyebrow">The platform</p>
+            <h2>Traditional monitoring wasn't built for this.</h2>
+            <div class="prose">
+              <p>Modern systems are distributed, dynamic, and noisy. Traditional monitoring tools weren't built for them.</p>
+              <p>otelnew is a next-generation observability platform designed from the ground up around <a href="https://opentelemetry.io/" rel="noopener noreferrer">OpenTelemetry</a>, the open standard for telemetry data. It correlates logs, metrics, and traces automatically, so engineers can follow a request across services, spot anomalies in real time, and pinpoint root causes without switching between tools.</p>
+              <p>Because it's built on open standards, your instrumentation stays portable and your data stays yours. Whether you're running Kubernetes, serverless, or a hybrid cloud, otelnew gives you full-stack visibility without the complexity or the lock-in.</p>
+            </div>
+          </div>
+          <ul class="outcome-list">
+            <li>
+              <strong>Instrument once</strong>
+              <span>One open standard for logs, metrics, and traces, across every service.</span>
+            </li>
+            <li>
+              <strong>See the whole request</strong>
+              <span>Follow a call across services without reconstructing the path by hand.</span>
+            </li>
+            <li>
+              <strong>Keep the data</strong>
+              <span>Portable instrumentation, and telemetry that isn't locked to one vendor.</span>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="signals" id="signals">
+        <div class="wrap">
+          <div class="section-head">
+            <p class="eyebrow">Three signals, one timeline</p>
+            <h2>Logs, metrics, and traces in the same place.</h2>
+            <p class="section-lead">Stop pivoting between tools to explain a single request. otelnew keeps the symptom, the span, and the log line together.</p>
+          </div>
+          <div class="signal-grid">
+            <article class="signal-card">
+              <div class="figure figure-logs" aria-hidden="true">
+                <p><b>ERROR</b> checkout-api pool exhausted</p>
+                <p><b>WARN</b> pool wait p99 1.4s</p>
+                <p><b>INFO</b> retry budget remaining 2</p>
+              </div>
+              <h3>Logs</h3>
+              <p>The lines that explain a failure, already tied to the request that produced them.</p>
+            </article>
+            <article class="signal-card">
+              <div class="figure figure-metrics" aria-hidden="true">
+                <span style="height:42%"></span>
+                <span style="height:48%"></span>
+                <span style="height:46%"></span>
+                <span style="height:70%"></span>
+                <span style="height:88%"></span>
+                <span class="is-hot" style="height:100%"></span>
+              </div>
+              <h3>Metrics</h3>
+              <p>Rate, errors, and latency as they move, so an anomaly is visible while it is still happening.</p>
+            </article>
+            <article class="signal-card">
+              <div class="figure figure-traces" aria-hidden="true">
+                <i style="width:46%"></i>
+                <i style="width:78%"></i>
+                <i class="is-hot" style="width:100%"></i>
+              </div>
+              <h3>Traces</h3>
+              <p>The path a request took across services, including the span where time disappeared.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="story" id="root-cause">
+        <div class="wrap story-grid">
+          <div>
+            <p class="eyebrow">From alert to root cause</p>
+            <h2>Minutes, not a tour of five tools.</h2>
+            <p class="section-lead">A latency alert is a starting point. otelnew correlates the trace and the logs automatically, so the failing hop and the reason it failed are on the same timeline.</p>
+          </div>
+          <article class="incident">
+            <header class="incident-top">
+              <span class="incident-tag">Latency</span>
+              <strong>checkout error rate 2.4%</strong>
+              <span class="incident-meta">p95 1.84s · last 15 min</span>
+            </header>
+            <ol class="incident-path">
+              <li><span>edge-gateway</span><em>12ms</em></li>
+              <li><span>checkout-api</span><em>90ms</em></li>
+              <li class="is-cause"><span>postgres</span><em>1.62s</em></li>
+            </ol>
+            <p class="incident-log"><b>ERROR</b> connection pool exhausted · timeout waiting for connection</p>
+            <p class="incident-foot">Same trace. Same request. No tool switch.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="how" id="how-it-works">
+        <div class="wrap">
+          <div class="section-head">
+            <p class="eyebrow">How it works</p>
+            <h2>One pipeline from instrumentation to answer.</h2>
+          </div>
+          <ol class="steps">
+            <li class="step">
+              <h3>Instrument once</h3>
+              <p>Emit logs, metrics, and traces with OpenTelemetry. The same standard covers every service you run.</p>
+            </li>
+            <li class="step">
+              <h3>Correlate automatically</h3>
+              <p>otelnew stitches those signals together, so a spike, a span, and a log line land on the same request.</p>
+            </li>
+            <li class="step">
+              <h3>Resolve in minutes</h3>
+              <p>Go from the alert to the failing service and the line that explains it, without opening another product.</p>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="environments" id="environments">
+        <div class="wrap">
+          <div class="section-head">
+            <p class="eyebrow">Where it runs</p>
+            <h2>Kubernetes, serverless, or hybrid cloud.</h2>
+            <p class="section-lead">Full-stack visibility without a second monitoring standard and without locking the instrumentation to one vendor.</p>
+          </div>
+          <div class="env-grid">
+            <article class="env-card">
+              <h3>Kubernetes</h3>
+              <p>Services, workloads, and the requests between them on one OpenTelemetry pipeline.</p>
+            </article>
+            <article class="env-card">
+              <h3>Serverless</h3>
+              <p>Functions and the APIs they call, visible in the same place as the rest of the system.</p>
+            </article>
+            <article class="env-card">
+              <h3>Hybrid cloud</h3>
+              <p>Cloud and data-center services in one view, with instrumentation you can take with you.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="standards" id="standards">
+        <div class="wrap standards-panel">
+          <div>
+            <p class="eyebrow eyebrow-light">Open standards</p>
+            <h2>Your instrumentation stays yours.</h2>
+          </div>
+          <div>
+            <p>otelnew is built on OpenTelemetry so the work you do to instrument a service stays portable. Your data stays yours. Switching tools later should not mean rewriting telemetry.</p>
+            <p class="fine-print">otelnew is an independent platform built on OpenTelemetry. It is not part of, affiliated with, or endorsed by the OpenTelemetry project.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="cta" id="access">
+        <div class="wrap cta-inner">
+          <div>
+            <h2>See your systems on one timeline.</h2>
+            <p>Bring logs, metrics, and traces into an OpenTelemetry-native platform.</p>
+          </div>
+          <a class="button" href="mailto:hello@otelnew.com">Request access</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap footer-grid">
+        <div>
+          <a class="logo" href="#top">
+            <img class="logo-mark" src="assets/logo.svg" alt="" width="32" height="32">
+            <span class="logo-word">otelnew</span>
+          </a>
+          <p>Observability, rebuilt for what's next.</p>
+        </div>
+        <div>
+          <h2>Product</h2>
+          <a href="#platform">Platform</a>
+          <a href="#signals">Signals</a>
+          <a href="#how-it-works">How it works</a>
+          <a href="#standards">Standards</a>
+        </div>
+        <div>
+          <h2>Contact</h2>
+          <a href="mailto:hello@otelnew.com">hello@otelnew.com</a>
+          <a href="https://otelnew.com/">otelnew.com</a>
+        </div>
+      </div>
+      <div class="wrap footer-base">
+        <p>© <span data-year>2026</span> otelnew</p>
+        <p>Built on OpenTelemetry. Not affiliated with or endorsed by the OpenTelemetry project.</p>
+      </div>
+    </footer>
+    <script src="js/main.js"></script>
+    <script>
+      var year = document.querySelector("[data-year]");
+      if (year) year.textContent = String(new Date().getFullYear());
+    </script>
+  </body>
+</html>
