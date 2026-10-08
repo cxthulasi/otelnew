@@ -103,7 +103,7 @@ resource "aws_cloudfront_distribution_tenant" "this" {
   connection_group_id = aws_cloudfront_connection_group.this.id
   name                = local.name
   enabled             = true
-  wait_for_deployment = false
+  wait_for_deployment = true
 
   domain {
     domain = var.hostname
@@ -113,6 +113,14 @@ resource "aws_cloudfront_distribution_tenant" "this" {
     primary_domain_name                         = var.hostname
     validation_token_host                       = "cloudfront"
     certificate_transparency_logging_preference = "enabled"
+  }
+
+  # CloudFront issues the certificate, then the tenant has to reference it
+  # before rum.otelnew.com will serve TLS.
+  customizations {
+    certificate {
+      arn = "arn:aws:acm:us-east-1:440027026084:certificate/0ef189fa-9456-4491-befc-5dba107550ca"
+    }
   }
 
   parameter {

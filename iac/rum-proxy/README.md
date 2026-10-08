@@ -30,7 +30,7 @@ After apply, read `cname_target` and add this record in Squarespace. Leave the G
 
 That value is the current `cname_target`. The distribution tenant cannot be created until this record resolves, because CloudFront checks that `rum.otelnew.com` already points at the connection group. After the record is in place, run `terraform apply` again.
 
-CloudFront issues the certificate for `rum.otelnew.com` after that CNAME resolves to the routing endpoint. The tenant is created with `wait_for_deployment = false` so apply finishes before the certificate exists. Until the CNAME is in place, the health check reports `dns_ok: false` and the browser SDK cannot deliver through the proxy.
+CloudFront issues the certificate for `rum.otelnew.com` after that CNAME resolves to the routing endpoint, then attaches it to the tenant. Until both steps finish, browsers cannot open `https://rum.otelnew.com` and no RUM is delivered.
 
 ## Alerts
 
