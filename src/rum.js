@@ -4,7 +4,7 @@ const proxyUrl = "https://rum.otelnew.com/rum";
 const page = (location.pathname.split("/").pop() || "index.html").replace(/\.html$/, "") || "index";
 
 CoralogixRum.init({
-  public_key: "cxtp_kxg6Whug9N5V8RcCIUjA1tFwV7Xi9p",
+  public_key: __RUM_PUBLIC_KEY__,
   coralogixDomain: "AP1",
   application: "otelnew",
   version: "1.2.0",

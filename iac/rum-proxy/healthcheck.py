@@ -13,7 +13,7 @@ import struct
 import urllib.error
 import urllib.request
 
-def main():
+def main(event, context):
     hostname = os.environ["HOSTNAME"]
     expected_cname = os.environ["EXPECTED_CNAME"].rstrip(".").lower()
     tenant_id = os.environ["TENANT_ID"]
@@ -155,4 +155,4 @@ def encode_name(name):
 
 
 if __name__ == "__main__":
-    main()
+    main(None, None)

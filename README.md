@@ -8,6 +8,8 @@ The site is static HTML, CSS, and JavaScript in [`site/`](site/). A push to `mai
 
 ```bash
 npm ci
+cp .env.example .env
+# set RUM_PUBLIC_KEY in .env to the browser Send-Your-Data key
 npm run build
 cd site
 python3 -m http.server 8765

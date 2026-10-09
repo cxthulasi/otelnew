@@ -34,6 +34,8 @@ jobs:
           cache: npm
 
       - name: Bundle the RUM SDK
+        env:
+          RUM_PUBLIC_KEY: ${{ secrets.RUM_PUBLIC_KEY }}
         run: npm ci && npm run build
 
       - name: Upload site

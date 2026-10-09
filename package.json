@@ -3,7 +3,7 @@
   "private": true,
   "description": "Build the Coralogix RUM bundle for the otelnew marketing site.",
   "scripts": {
-    "build": "esbuild src/rum.js --bundle --format=iife --target=es2018 --outfile=site/js/rum.js --minify --legal-comments=none"
+    "build": "node scripts/build-rum.cjs"
   },
   "dependencies": {
     "@coralogix/browser": "4.1.1"
