@@ -7,10 +7,16 @@ CoralogixRum.init({
   public_key: "cxtp_kxg6Whug9N5V8RcCIUjA1tFwV7Xi9p",
   coralogixDomain: "AP1",
   application: "otelnew",
-  version: "1.1.0",
+  version: "1.2.0",
   proxyUrl,
   sessionConfig: {
     keepSessionAfterReload: true,
+  },
+  sessionRecordingConfig: {
+    enable: true,
+    autoStartSessionRecording: true,
+    recordConsoleEvents: true,
+    sessionRecordingSampleRate: 100,
   },
   labels: {
     site: "otelnew.com",
